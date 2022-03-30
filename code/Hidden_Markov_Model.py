@@ -56,7 +56,7 @@ def values_deviation(vals):
 
 # General plots of hidden states
 def plot_hidden_states(hmm_model, data, X, column_price):
-    plt.figure(figsize=(15, 15))
+    # plt.figure(figsize=(15, 15))
     fig, axs = plt.subplots(hmm_model.n_components, 3, figsize=(15, 15))
     colours = cm.prism(np.linspace(0, 1, hmm_model.n_components))
     hidden_states = hmm_model.predict(X)
@@ -87,7 +87,7 @@ def mean_confidence_interval(vals, confidence):
     return m - h, m, m + h
 
 def compare_hidden_states(hmm_model, cols_features, conf_interval, iters=1000):
-    plt.figure(figsize=(15, 15))
+    # plt.figure(figsize=(15, 15))
     fig, axs = plt.subplots(len(cols_features), hmm_model.n_components, figsize=(15, 15))
     colours = cm.prism(np.linspace(0, 1, hmm_model.n_components))
 
@@ -168,7 +168,7 @@ train_set = dataset[cols_features].values[:train_ind]
 test_set = dataset[cols_features].values[train_ind:]
 
 # Plot features
-plt.figure(figsize=(20, 10))
+# plt.figure(figsize=(20, 10))
 fig, axs = plt.subplots(len(cols_features), 1, figsize=(15, 15))
 colours = cm.rainbow(np.linspace(0, 1, len(cols_features)))
 for i in range(0, len(cols_features)):
@@ -185,13 +185,13 @@ model = get_best_hmm_model(X=train_set, max_states=5, max_iter=1000000)
 # print(model)
 print("Best model with {0} states ".format(str(model.n_components)))
 
-# print('The number of Hidden States', model.n_components)
-# print('Mean matrix')
-# print(model.means_)
-# print('Covariance matrix')
-# print(model.covars_)
-# print('Transition matrix')
-# print(model.transmat_)
+print('The number of Hidden States', model.n_components)
+print('Mean matrix')
+print(model.means_)
+print('Covariance matrix')
+print(model.covars_)
+print('Transition matrix')
+print(model.transmat_)
 
 
 # ### Lets look at state and the next market movement
